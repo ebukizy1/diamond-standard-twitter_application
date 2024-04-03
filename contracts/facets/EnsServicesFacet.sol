@@ -21,7 +21,9 @@ contract EnsServicesFacet{
         _userProfile.totalPosts = 0;
         _userProfile.followers =  0;
         _userProfile.following = 0; 
+        _appStorage.hasRegistered[msg.sender] = true;
         _appStorage.profileList.push(_userProfile);
+
         emit RegistrationSuccessful(msg.sender, _username);
         
     }

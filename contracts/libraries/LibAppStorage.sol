@@ -12,16 +12,21 @@ struct Post{
     uint numberOfLikes;
     uint numberOfRetweet;
     Comment [] commentedList;
+    address [] likersAddress;
     address poster;
 
 }
 
+
 struct Comment {
     uint8 postId;
+    uint8 commentCount;
     string imageUrl;
     bytes32 postComment;
     address commenter;
     }
+
+
 
 
 
@@ -34,12 +39,14 @@ struct Comment {
         uint256 following;
         uint256 totalPosts;
         string imageUrl;
+        bool hasLiked;
     }
     
     struct Layout{
         mapping(address =>Profile) userProfile;
         mapping(bytes32 => address) usernameToAddress;
         mapping(address => bytes32) addressToUsername;
+        mapping(address => bool) hasRegistered;
         mapping(uint => Post) userPost;
         Post [] postList;
         Profile [] profileList;
